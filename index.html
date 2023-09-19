@@ -7,6 +7,7 @@
 <title>Fertilitas Remaja</title>
 <link rel="stylesheet" type="text/css" id="applicationStylesheet" href="styles.css"/>
 <script id="applicationScript" type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="chartjs/Chart.js"></script>
 </head>
 <body>
 <div id="n_0_-_Cemungud">
@@ -168,21 +169,28 @@
 		
 	<img id="n__b" src="n__b.png" srcset="n__b.png 1x, n__b@2x.png 2x">
 		
-	<img id="Grafik1" src="Grafik1.png" srcset="Grafik1.png 1x, Grafik1@2x.png 2x">
+	<!-- <img id="Grafik1" src="Grafik1.png" srcset="Grafik1.png 1x, Grafik1@2x.png 2x"> -->
+	<div id="Chart1">
+		<canvas id="densityChart"></canvas>
+	</div>
 		
 	<div id="Remaja_didefinisikan_sebagai_p">
 		<span>Remaja didefinisikan sebagai penduduk laki-laki atau perempuan yang berusia 10-19 tahun (UNICEF, 2021). Jika dibandingkan negara ASEAN, Indonesia menempati urutan ke lima tertinggi angka kelahiran per 1.000 perempuan umur 15-19 tahun (ASFR 15-19) (UNDP, 2022). <br/><br/>Angka kelahiran menurut umur tertentu (Age Spesific Fertility Rate atau ASFR) menunjukkan banyaknya kelahiran pada perempuan kelompok umur tertentu per 1000 perempuan pada kelompok umur tersebut      </span>
 	</div>
 	<div id="Sumber__Human_Development_Repo">
+		<span>Grafik 1. ASFR menurut Negara Tahun 2022</span>
 		<span>Sumber : Human Development Report (UNDP, 2022)</span>
 	</div>
-	<div id="Grafik_1_ASFR_menurut_Negara_T">
-		<span>Grafik 1. ASFR menurut Negara Tahun 2022</span>
-	</div>
+	<!-- <div id="Grafik_1_ASFR_menurut_Negara_T">
+		
+	</div> -->
 	<div id="Perkembangan_tren_ASFR_selama_">
 		<span>Perkembangan tren ASFR selama 50 tahun terakhir, ASFR 15-19 tahun mengalami penurunan yang signifikan dari 155 pada SP 1971 menjadi 26,64 SP2020.</span>
 	</div>
-	<img id="Grafik2" src="Grafik2.png" srcset="Grafik2.png 1x, Grafik2@2x.png 2x">
+	<!-- <img id="Grafik2" src="Grafik2.png" srcset="Grafik2.png 1x, Grafik2@2x.png 2x"> -->
+	<div id="Chart2">
+		<canvas id="densityChart2"></canvas>
+	</div>
 		
 	<div id="Grafik_2_Trend_ASFR_di_Indones">
 		<span>Grafik 2. Trend ASFR di Indonesia Tahun 2022<br/>Sumber : Sensus Penduduk, BPS</span>
@@ -230,10 +238,14 @@
 		
 	<img id="n__cm" src="n__cm.png" srcset="n__cm.png 1x, n__cm@2x.png 2x">
 		
-	<img id="Grafik4" src="Grafik4.png" srcset="Grafik4.png 1x, Grafik4@2x.png 2x">
+	<!-- <img id="Grafik4" src="Grafik4.png" srcset="Grafik4.png 1x, Grafik4@2x.png 2x"> -->
+	<div id="Chart4">
+		<canvas id="speedChart"></canvas>
+	</div>
 		
 	<div id="Grafik4_Angka_Partisipasi_Seko">
-		<span>Grafik4. Angka Partisipasi Sekolah Menurut Kelompok Umur<br/>Sumber : Survei Sosial Ekonomi Nasional, BPS</span>
+		<span>Grafik4. Angka Partisipasi Sekolah Menurut Kelompok Umur<br/>
+			Sumber : Survei Sosial Ekonomi Nasional 2009-2022, BPS </span>
 	</div>
 	<div id="Tingkat_fertilitas_remaja_yang">
 		<span>Tingkat fertilitas remaja yang tinggi dapat mengakibatkan berbagai hal. Tidak hanya berdampak pada fisik, namun juga sosial. Wilayah yang memiliki penduduk miskin yang tinggi cenderung memiliki tingkat kelahiran remaja yang tinggi pula, sebaliknya wilayah yang memiliki IPM yang tinggi memiliki tingkat kelahiran remaja yang rendah</span>
@@ -293,7 +305,7 @@
 			<span>Desain : Cholifa Fitri Annisa</span>
 		</div>
 		<div id="undp">
-			<span>undp</span>
+			<span>UNDP</span>
 		</div>
 		<div id="Freepikcom">
 			<span>Freepik.com</span>
@@ -350,5 +362,135 @@
 	<img id="Image_1" src="Image_1.png" srcset="Image_1.png 1x, Image_1@2x.png 2x">
 		
 </div>
+<script>
+var densityCanvas = document.getElementById("densityChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var densityData = {
+  label: 'ASFR 2022',
+  data: [2.6, 9.3,10.0,15.7,32.7,33.0,33.9,34.6,45.5,48.2,73.2],
+  backgroundColor: 'rgba(0, 99, 132, 0.6)',
+  borderColor: 'rgba(0, 99, 132, 1)',
+  yAxisID: "y-axis-density"
+};
+ 
+ 
+var planetData = {
+  labels: ["Singapura", "Malaysia", "Brunei Darussalam", "Sri Langka", "Thailand", 
+  "Myanmar", "Indonesia", "Vietnam","Kamboja", "Filipina","Laos"],
+  datasets: [densityData]
+};
+ 
+var chartOptions = {
+  scales: {
+    xAxes: [{
+      barPercentage:1,
+    }],
+    yAxes: [{
+      id: "y-axis-density"
+    }]
+  }
+};
+ 
+var barChart = new Chart(densityCanvas, {
+  type: 'bar',
+  data: planetData,
+  options: chartOptions
+});
+
+
+var densityCanvas2 = document.getElementById("densityChart2");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var asfrData = {
+  label: 'Trend ASFR Indonesia 2022',
+  data: [155, 116, 71, 44, 41 , 26.64 ],
+  backgroundColor: 'rgba(99, 132, 0, 0.6)',
+  borderColor: 'rgba(99, 132, 0, 1)',
+  yAxisID: "y-axis-density"
+};
+ 
+	
+var spData = {
+  labels: ["SP 1971","SP 1980", "Sp 1990", "Sp 2000", "SP2010", "SP 2020"],
+  datasets: [asfrData]
+};
+ 
+var chartOptions = {
+  scales: {
+    xAxes: [{
+      barPercentage:1,
+    }],
+    yAxes: [{
+      id: "y-axis-density"
+    }]
+  }
+};
+ 
+var barChart = new Chart(densityCanvas2, {
+  type: 'bar',
+  data: spData,
+  options: chartOptions
+});
+
+//SpeedChart
+
+var speedCanvas = document.getElementById("speedChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var dataFirst = {
+    label: "Laki-Laki",
+    data: [45.97, 46.49,47.64,51.56,53.99,58.78,58.74,58.37,59.6,59.74,59.4,60.49,61.02,60.3],
+    lineTension: 0,
+    fill: false,
+    borderColor: 'red'
+  };
+
+var dataSecond = {
+    label: "Perempuan",
+    data: [44.2,44.65,48.31,51.35,54.53,59.95,60.77,61.61,61.18,61.64,62.38,62.05,62.3,63.73],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'blue'
+  };
+
+  var dataGab = {
+    label: "Laki-Laki+Perempuan",
+    data: [45.11,45.59,47.97,51.46,54.25,59.35,59.71,59.95,60.37,60.67,60.84,61.25,61.65,61.97],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'black'
+  };
+
+var speedData = {
+  labels: ["2009", "2010", "2011", "2012", "2013", "2014", "2015","2016","2017","2018","2019","2020","2021","2022"],
+  datasets: [dataFirst, dataSecond, dataGab]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+  }
+};
+
+var lineChart = new Chart(speedCanvas, {
+  type: 'line',
+  data: speedData,
+  options: chartOptions
+});
+
+</script>
+
 </body>
 </html>

@@ -739,6 +739,15 @@
 	top: 9029px;
 	overflow: visible;
 }
+#Chart1 {
+	position: absolute;
+	width: 1097px;
+	height: 450px auto;
+	left: 412px;
+	top: 8420px;
+	background-color: #fff;
+	overflow: visible;
+}
 #Grafik1 {
 	position: absolute;
 	width: 1097px;
@@ -805,6 +814,17 @@
 	font-size: 40px;
 	color: rgba(255,255,255,1);
 }
+
+#Chart2 {
+	position: absolute;
+	width: 1097px;
+	height: 485px auto;
+	left: 412px;
+	top: 9419px;
+	background-color: #fff;
+	overflow: visible;
+}
+
 #Grafik2 {
 	position: absolute;
 	width: 1097px;
@@ -1024,6 +1044,15 @@
 	height: 2244px;
 	left: -162px;
 	top: 13517px;
+	overflow: visible;
+}
+#Chart4 {
+	position: absolute;
+	width: 1170px;
+	height: 400px auto;
+	left: 408px;
+	top: 12800px;
+	background-color: #fff;
 	overflow: visible;
 }
 #Grafik4 {
